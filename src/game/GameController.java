@@ -15,7 +15,7 @@ public class GameController {
 		logic.setGameField(field);
 	}
 	
-	private final static int CHAR_TO_INT_OFFSET_ROW = 48;
+	private final static int CHAR_TO_INT_OFFSET_ROW = 49;
 	private final static int CHAR_TO_INT_OFFSET_COLUMN = 65;
 	
 	final static int FILLED = 10;
