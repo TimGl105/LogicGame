@@ -76,7 +76,7 @@ public class GameLogic {
 			for (int j = 0; j < gameSize; j++) {
 				if (completeField[i][j] != FILLED && gameField[i][j] == FILLED) {
 					return false;
-				} else if (completeField[i][j] == FILLED && gameField[i][j] == FILLED) {
+				} else if (completeField[i][j] == FILLED && gameField[i][j] != FILLED) {
 					return false;
 				}
 			}

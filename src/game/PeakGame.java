@@ -7,7 +7,7 @@ public class PeakGame {
 	public static void main(String[] args) {
 		GameLogic logic = new GameLogic(1);
 		OutputGerman view = new OutputGerman(logic);
-		GameController game = new GameController(logic, view, COOKIE);
+		GameController game = new GameController(logic, view, CAR);
 		game.startGame();
 	}
 	

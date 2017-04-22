@@ -45,8 +45,8 @@ public class GameController {
 			view.displayField(logic.getCompleteGameField(), logic.getGameSize());
 		}
 		time = (System.currentTimeMillis() - time) / 1000;
-		view.displayElapsedTime(time);
 		view.displayCongratulations();
+		view.displayElapsedTime(time);
 		scanner.close();
 	}
 
