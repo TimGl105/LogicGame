@@ -56,10 +56,18 @@ public class GameLogic {
 	}
 	
 	/**
-	 * Returns the full gamesize.
-	 * @return completeGameSize
+	 * Returns size of the inner gamefield.
+	 * @return gameSize
 	 */
 	public int getGameSize() {
+		return gameSize;
+	}
+	
+	/**
+	 * Returns size of the complete gamefield.
+	 * @return completeGameSize
+	 */
+	public int getCompleteGameSize() {
 		return completeGameSize;
 	}
 	

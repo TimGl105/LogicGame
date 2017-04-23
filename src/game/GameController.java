@@ -23,7 +23,7 @@ public class GameController {
 	
 	void startGame() {
 		view.displayGameRules();
-		view.displayField(logic.getCompleteGameField(), logic.getGameSize());
+		view.displayField(logic.getCompleteGameField(), logic.getGameSize(), logic.getCompleteGameSize());
 		
 		double time = System.currentTimeMillis();
 		
@@ -42,7 +42,7 @@ public class GameController {
 //			}
 			
 			logic.setSingleField(tmp[1] - CHAR_TO_INT_OFFSET_ROW, tmp[0] - CHAR_TO_INT_OFFSET_COLUMN, tmp[2]);
-			view.displayField(logic.getCompleteGameField(), logic.getGameSize());
+			view.displayField(logic.getCompleteGameField(), logic.getGameSize(), logic.getCompleteGameSize());
 		}
 		time = (System.currentTimeMillis() - time) / 1000;
 		view.displayCongratulations();
