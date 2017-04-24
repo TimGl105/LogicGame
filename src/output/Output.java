@@ -11,12 +11,14 @@ public abstract class Output {
 	
 	protected final int FILLED;
 	protected final int UNFILLED;
+	protected final int RESET;
 	private final int CHAR_TO_INT_OFFSET = 65;
 	
 	public Output(GameLogic logic) {
 		this.logic = logic;
 		FILLED = logic.getConstantForFilled();
 		UNFILLED = logic.getConstantForUnfilled();
+		RESET = logic.getConstantForReset();
 	}
 	
 	public abstract void displayGameRules();
@@ -36,6 +38,7 @@ public abstract class Output {
 				else if (j == 0) System.out.print("   ");
 				if (field[i][j] == UNFILLED) outputTmp = "*";
 				else if (field[i][j] == FILLED) outputTmp = "X";
+				else if (field[i][j] == RESET) outputTmp = " ";
 				else if (field[i][j] == 0) outputTmp = " "; 
 				else outputTmp = ((Integer) field[i][j]).toString();
 				System.out.print("|" + outputTmp);

@@ -12,20 +12,20 @@ public class OutputGerman extends Output {
 	}
 
 	public void displayGameRules() {
-		System.out.println("Die Regeln sind einfach: links oben beginnend befindet sich\n"
-				+ "ein quadratisches Spielfeld. Außerhalb davon befinden sich rechts und unterhalb\n"
-				+ "des Spielfeldes Hinweise, wieviele aufeinanderfolgende Felder gefüllt sind.\n"
-				+ "Die Hinweise rechts geben Aufschluss auf die jeweilige Zeile und die unterhalb\n"
-				+ "auf die jeweilige Spalte.\n"
-				+ "1 und 2 bedeutet zum Beispiel, dass von links nach rechts 1 einzelnes Feld gefüllt ist\n"
-				+ "und weiter rechts davon zwei auffeinanderfolgende Felder gefüllt sind. Davor und\n"
-				+ "dazwischen befinden sich beliebiggroße Freiräume.\n"
-				+ "Aufgabe:\n Fülle das gesamte Spielfeld, ein \"X\" steht für ein ausgefülltes Feld, ein\n"
-				+ "\"*\" für ein freies Feld. Die Spalten werden in Buchstaben von A-J und die Zeilen\n"
-				+ "von 1-9 aufgezählt.\n"
-				+ "Das linke obere Feld wird also als gefülltes Feld mit A1X deklariert. Ein freies Feld\n"
-				+ "wird zum Beispiel mit G7* deklariert.\n"
-				+ "Viel Spaß beim Spielen.\n");
+		System.out.println("Die Regeln sind einfach: links oben beginnend befindet sich ein quadratisches Spielfeld.\n"
+				+ "Außerhalb davon befinden sich rechts und unterhalb des Spielfeldes Hinweise, wieviele aufeinanderfolgende\n"
+				+ "Felder in welcher Reihenfolge gefüllt sind. Die Hinweise rechts geben Aufschluss auf die jeweilige Zeile\n"
+				+ "und die unterhalb auf die jeweilige Spalte.\n"
+				+ "1 und 2 am rechten Rand bedeuten zum Beispiel, dass von links nach rechts 1 einzelnes Feld gefüllt ist\n"
+				+ "und weiter rechts davon zwei auffeinanderfolgende Felder. Davor und dazwischen befinden sich beliebiggroße Freiräume.\n"
+				+ "Aufgabe:\n Fülle das gesamte Spielfeld, ein \"X\" markiert ein ausgefülltes Feld, ein \"*\" ein freies Feld.\n"
+				+ "Die Spalten werden in Buchstaben von A-I und die Zeilen von 1-9 aufgezählt. Ein markiertes Feld kann mit \"~\"\n"
+				+ "wieder entmarkiert werden."
+				+ "Beispiele:\n"
+				+ "Das linke obere Feld wird also als gefülltes Feld mit A1X markiert.\n"
+				+ "Ein freies Feld wird zum Beispiel mit G7* deklariert.\n"
+				+ "Mit G7~ wird die *-Markierung wieder entfernt.\n"
+				+ "\nViel Spaß beim Spielen.\n");
 	}
 	
 	public void displayGameOptions(Vector<GameField> games) {

@@ -9,13 +9,18 @@ public class PeakGame {
 	public static Vector<GameField> games;
 
 	public static void main(String[] args) {
+		PeakGame pg = new PeakGame();
+		
 		games = new Vector<GameField>();
-		GameField car = new GameField("Car", CAR);
+		
+		GameField full_random = new GameField("Full Random", pg.getRandomField(9));
+		GameField car = new GameField("Car", pg.getCarField());
 		GameField cookie = new GameField("Cookie", COOKIE);
-		GameField full_random = new GameField("Full Random", FULL_RANDOM);
+		
 		games.add(car);
 		games.add(cookie);
 		games.add(full_random);
+		
 		GameLogic logic = new GameLogic(1);
 		OutputGerman view = new OutputGerman(logic);
 		GameController game = new GameController(logic, view, games);
@@ -24,13 +29,17 @@ public class PeakGame {
 	
 	//Alternative Games
 	
-	public static final int[][] CAR = {
+	private static final int[][] CAR = {
 			{0, 0, 0, 0},
 			{0, 1, 1, 1},
 			{1, 1, 1, 1},
 			{1, 0, 0, 1}};
 	
-	public static final int[][] COOKIE = {
+	private int[][] getCarField() {
+		return CAR;
+	}
+	
+	private static final int[][] COOKIE = {
 			{1, 1, 1, 1, 1, 1, 1},
 			{1, 0, 0, 1, 0, 0, 1},
 			{1, 0, 1, 1, 1, 0, 1},
@@ -39,16 +48,15 @@ public class PeakGame {
 			{1, 0, 0, 1, 0, 0, 1},
 			{1, 1, 1, 1, 1, 1, 1}};
 	
-	public static final int[][] FULL_RANDOM = {
-			{getRandomFill(), getRandomFill(), getRandomFill(), getRandomFill(), getRandomFill(), getRandomFill(), getRandomFill(), getRandomFill(), getRandomFill()},
-			{getRandomFill(), getRandomFill(), getRandomFill(), getRandomFill(), getRandomFill(), getRandomFill(), getRandomFill(), getRandomFill(), getRandomFill()},
-			{getRandomFill(), getRandomFill(), getRandomFill(), getRandomFill(), getRandomFill(), getRandomFill(), getRandomFill(), getRandomFill(), getRandomFill()},
-			{getRandomFill(), getRandomFill(), getRandomFill(), getRandomFill(), getRandomFill(), getRandomFill(), getRandomFill(), getRandomFill(), getRandomFill()},
-			{getRandomFill(), getRandomFill(), getRandomFill(), getRandomFill(), getRandomFill(), getRandomFill(), getRandomFill(), getRandomFill(), getRandomFill()},
-			{getRandomFill(), getRandomFill(), getRandomFill(), getRandomFill(), getRandomFill(), getRandomFill(), getRandomFill(), getRandomFill(), getRandomFill()},
-			{getRandomFill(), getRandomFill(), getRandomFill(), getRandomFill(), getRandomFill(), getRandomFill(), getRandomFill(), getRandomFill(), getRandomFill()},
-			{getRandomFill(), getRandomFill(), getRandomFill(), getRandomFill(), getRandomFill(), getRandomFill(), getRandomFill(), getRandomFill(), getRandomFill()},
-			{getRandomFill(), getRandomFill(), getRandomFill(), getRandomFill(), getRandomFill(), getRandomFill(), getRandomFill(), getRandomFill(), getRandomFill()}};
+	private int[][] getRandomField(int size) {
+		int[][] randomField = new int[size][size];
+		for (int i = 0; i < size; i++) {
+			for (int j = 0; j < size; j++) {
+				randomField[i][j] = getRandomFill();
+			}
+		}
+		return randomField;
+	}
 	
 	//Methods
 	public static int getRandomFill() {
