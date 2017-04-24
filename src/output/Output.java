@@ -1,5 +1,8 @@
 package output;
 
+import java.util.Vector;
+
+import game.GameField;
 import game.GameLogic;
 
 public abstract class Output {
@@ -17,6 +20,8 @@ public abstract class Output {
 	}
 	
 	public abstract void displayGameRules();
+	
+	public abstract void displayGameOptions(Vector<GameField> games);
 
 	public void displayField(int[][] field, int innerSize, int completeSize) {
 		System.out.print("    ");

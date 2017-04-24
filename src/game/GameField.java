@@ -2,10 +2,12 @@ package game;
 
 public class GameField {
 	
+	private String name;
 	private int[][] field;
 	
-	public GameField(int size) {
-		this.field = new int[size][size];
+	public GameField(String name, int[][] field) {
+		this.name = name;
+		this.field = field;
 	}
 	
 	public int getEntry(int row, int column) {
@@ -18,5 +20,21 @@ public class GameField {
 	
 	public int getLength() {
 		return this.field.length;
+	}
+
+	public String getName() {
+		return this.name;
+	}
+
+	public void setName(String name) {
+		this.name = name;
+	}
+	
+	public int[][] getGameField() {
+		return field;
+	}
+	
+	public void setGameField(int[][] field) {
+		this.field = field;
 	}
 }

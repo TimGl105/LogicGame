@@ -1,5 +1,8 @@
 package output;
 
+import java.util.Vector;
+
+import game.GameField;
 import game.GameLogic;
 
 public class OutputGerman extends Output {	
@@ -23,6 +26,13 @@ public class OutputGerman extends Output {
 				+ "Das linke obere Feld wird also als gefülltes Feld mit A1X deklariert. Ein freies Feld\n"
 				+ "wird zum Beispiel mit G7* deklariert.\n"
 				+ "Viel Spaß beim Spielen.\n");
+	}
+	
+	public void displayGameOptions(Vector<GameField> games) {
+		System.out.println("Wähle das Spielfeld, das du spielen möchtest. Gebe seine Nummer an.");
+		for (int i = 0; i < games.size(); i++) {
+			System.out.print((i + 1) + " " + games.get(i).getName() + "  ");
+		}
 	}
 	
 	public void displayElapsedTime(double time) {
