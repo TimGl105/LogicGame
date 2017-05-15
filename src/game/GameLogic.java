@@ -4,6 +4,7 @@ public class GameLogic {
 
 	private final static int FILLED = -2;
 	private final static int UNFILLED = -1;
+	private final static int RESET = -3;
 	
 	/**
 	 * The indicator for filled by the input-field.
@@ -27,6 +28,10 @@ public class GameLogic {
 	
 	public int getConstantForUnfilled() {
 		return UNFILLED;
+	}
+	
+	public int getConstantForReset() {
+		return RESET;
 	}
 	
 	/**
@@ -107,7 +112,7 @@ public class GameLogic {
 					tmp++;
 					gameField[i][j] = FILLED;
 				} else {
-					gameField[i][j] = UNFILLED;
+					gameField[i][j] = RESET;
 					completeField[i][gameSize + run] = tmp; 
 					if (tmp != 0) run++;
 					tmp = 0;
@@ -144,6 +149,7 @@ public class GameLogic {
 				&& column >= 0 && column < gameSize) {
 			if (symbol == 'X') completeField[row][column] = FILLED;
 			else if (symbol == '*') completeField[row][column] = UNFILLED;
+			else if (symbol == '~') completeField[row][column] = RESET;
 		}
 	}
 }

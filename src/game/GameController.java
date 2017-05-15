@@ -29,6 +29,9 @@ public class GameController {
 
 		Scanner scanner = new Scanner(System.in);
 		int i = scanner.nextInt() - 1;
+//		if (i == 1) {
+//			
+//		}
 		logic.setGameField(games.get(i).getGameField());
 		
 		scanner.nextLine();
@@ -51,6 +54,8 @@ public class GameController {
 //				System.out.print(tmp[j] + " " + j);		
 //			}
 //			System.out.println();
+			tmp[0] = Character.toUpperCase(tmp[0]);
+			tmp[2] = Character.toUpperCase(tmp[2]);
 			
 			logic.setSingleField(tmp[1] - CHAR_TO_INT_OFFSET_ROW, tmp[0] - CHAR_TO_INT_OFFSET_COLUMN, tmp[2]);
 			view.displayField(logic.getCompleteGameField(), logic.getGameSize(), logic.getCompleteGameSize());
