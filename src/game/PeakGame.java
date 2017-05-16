@@ -23,8 +23,8 @@ public class PeakGame {
 		
 		GameLogic logic = new GameLogic(1);
 		OutputGerman view = new OutputGerman(logic);
-		GameController game = new GameController(logic, view, games);
-		game.startGame();
+		GameController game = new GameController("GameController", logic, view, games);
+		game.start();
 	}
 	
 	//Alternative Games

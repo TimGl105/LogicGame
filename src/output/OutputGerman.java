@@ -11,6 +11,7 @@ public class OutputGerman extends Output {
 		super(logic);
 	}
 
+	@Override
 	public void displayGameRules() {
 		System.out.println("Die Regeln sind einfach: links oben beginnend befindet sich ein quadratisches Spielfeld.\n"
 				+ "Außerhalb davon befinden sich rechts und unterhalb des Spielfeldes Hinweise, wieviele aufeinanderfolgende\n"
@@ -28,6 +29,7 @@ public class OutputGerman extends Output {
 				+ "\nViel Spaß beim Spielen.\n");
 	}
 	
+	@Override
 	public void displayGameOptions(Vector<GameField> games) {
 		System.out.println("Wähle das Spielfeld, das du spielen möchtest. Gebe seine Nummer an.");
 		for (int i = 0; i < games.size(); i++) {
@@ -35,11 +37,57 @@ public class OutputGerman extends Output {
 		}
 	}
 	
+	@Override
+	public void displayWrongGameInputMessage() {
+		System.out.println("Die eingegebene Zahl des gewünschten Spielfelds ist nicht gültig, "
+				+ "bitte wähle eine gültige und bestätige mit Enter.");
+	}
+	
+	@Override
+	public void displayFieldInputRequest() {
+		System.out.println("Spalte Reihe Zeichen: X/*");
+	}
+	
+	@Override
+	public void displayWrongInputLength() {
+		System.out.println("Die Anzahl der eingegeben Werte ist ungültig. Bitte gib die Werte erneut ein.");
+	}
+
+	@Override
+	public void displayWrongInputMessage(char wrongInput, int error) {
+		String errorCase = "";
+		switch (error) {
+		case ERROR_IN_COLUMN: errorCase = "Spaltenwert"; break;
+		case ERROR_IN_ROW: errorCase = "Zeilenwert"; break;
+		case ERROR_IN_SYMBOL: errorCase = "Symbol"; break;
+		default: errorCase = "???";
+		}
+		System.out.println(wrongInput + " ist als " + errorCase + " ungültig. Bitte gib die Werte erneut ein.");
+	}
+	
+	@Override
+	public void displayWrongColumnInputMessage(char wrongInput) {
+		System.out.println(wrongInput + " ist als Spaltenwert ungültig. Bitte gib die Werte erneut ein.");
+	}
+	
+	@Override
+	public void displayWrongRowInputMessage(char wrongInput) {
+		System.out.println(wrongInput + " ist als Zeilenwert ungültig. Bitte gib die Werte erneut ein.");
+	}
+
+	@Override
+	public void displayWrongSymbolInputMessage(char wrongInput) {
+		System.out.println(wrongInput + " ist als Symbol ungültig. Bitte gib die Werte erneut ein.");
+	}
+	
+	@Override
 	public void displayElapsedTime(double time) {
 		System.out.println("Du hast " + time + " Sekunden gebraucht.");
 	}
 	
+	@Override
 	public void displayCongratulations() {
 		System.out.println("Glückwunsch. Du hast das Spiel gelöst!");
 	}
+
 }
