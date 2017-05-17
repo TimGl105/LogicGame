@@ -19,7 +19,7 @@ public class GameLogic {
 	private int[][] completeField;
 	
 	public GameLogic(int filled) {
-		FILLED_GF = filled;
+		this.FILLED_GF = filled;
 	}
 	
 	public int getConstantForFilled() {

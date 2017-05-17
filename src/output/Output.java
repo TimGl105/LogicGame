@@ -19,9 +19,9 @@ public abstract class Output {
 	
 	public Output(GameLogic logic) {
 		this.logic = logic;
-		FILLED = logic.getConstantForFilled();
-		UNFILLED = logic.getConstantForUnfilled();
-		RESET = logic.getConstantForReset();
+		this.FILLED = logic.getConstantForFilled();
+		this.UNFILLED = logic.getConstantForUnfilled();
+		this.RESET = logic.getConstantForReset();
 	}
 	
 	public abstract void displayGameRules();
