@@ -13,12 +13,15 @@ public abstract class Output {
 	protected final int UNFILLED;
 	protected final int RESET;
 	private final int CHAR_TO_INT_OFFSET = 65;
+	public final static int ERROR_IN_COLUMN = -1;
+	public final static int ERROR_IN_ROW = -2;
+	public final static int ERROR_IN_SYMBOL = -3;
 	
 	public Output(GameLogic logic) {
 		this.logic = logic;
-		FILLED = logic.getConstantForFilled();
-		UNFILLED = logic.getConstantForUnfilled();
-		RESET = logic.getConstantForReset();
+		this.FILLED = logic.getConstantForFilled();
+		this.UNFILLED = logic.getConstantForUnfilled();
+		this.RESET = logic.getConstantForReset();
 	}
 	
 	public abstract void displayGameRules();
@@ -47,8 +50,22 @@ public abstract class Output {
 		}
 	}
 	
+	public abstract void displayWrongGameInputMessage();
+	
+	public abstract void displayFieldInputRequest();
+	
+	public abstract void displayWrongInputLength();
+
+	public abstract void displayWrongInputMessage(char wrongInput, int error);
+	
+	public abstract void displayWrongColumnInputMessage(char wrongInput);
+	
+	public abstract void displayWrongRowInputMessage(char wrongInput);
+
+	public abstract void displayWrongSymbolInputMessage(char wrongInput);
+	
 	public abstract void displayElapsedTime(double time);
 	
 	public abstract void displayCongratulations();
-	
+
 }
