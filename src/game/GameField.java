@@ -30,11 +30,11 @@ public class GameField {
 		this.name = name;
 	}
 	
-	public int[][] getGameField() {
+	public int[][] getField() {
 		return field;
 	}
 	
-	public void setGameField(int[][] field) {
+	public void setField(int[][] field) {
 		this.field = field;
 	}
 }

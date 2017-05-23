@@ -2,7 +2,7 @@ package output;
 
 import java.util.Vector;
 
-import game.GameField;
+import game.Game;
 import game.GameLogic;
 
 public class OutputGerman extends Output {	
@@ -30,10 +30,10 @@ public class OutputGerman extends Output {
 	}
 	
 	@Override
-	public void displayGameOptions(Vector<GameField> games) {
+	public void displayGameOptions(Vector<Game> games) {
 		System.out.println("Wähle das Spielfeld, das du spielen möchtest. Gebe seine Nummer an.");
 		for (int i = 0; i < games.size(); i++) {
-			System.out.print((i + 1) + " " + games.get(i).getName() + "  ");
+			System.out.print("(" + (i + 1) + ") " + games.get(i).getGamefield().getName() + "  ");
 		}
 	}
 	
@@ -82,7 +82,7 @@ public class OutputGerman extends Output {
 	
 	@Override
 	public void displayElapsedTime(double time) {
-		System.out.println("Du hast " + time + " Sekunden gebraucht.");
+		System.out.println("Du hast " + (int) time/60 + " Minuten und " + (int) time%60 + " Sekunden gebraucht.");
 	}
 	
 	@Override
@@ -90,4 +90,13 @@ public class OutputGerman extends Output {
 		System.out.println("Glückwunsch. Du hast das Spiel gelöst!");
 	}
 
+	@Override
+	public void displayNameInputMessage() {
+		System.out.println("Bitte gib deinen Namen für die Rangliste ein.");
+	}
+
+	@Override
+	public void displayRestartOption() {
+		System.out.println("Wenn du noch ein Spiel spielen willst, gib \"Ja\" ein.");
+	}
 }
