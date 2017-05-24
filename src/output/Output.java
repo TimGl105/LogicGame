@@ -58,13 +58,13 @@ public abstract class Output {
 	public abstract void displayWrongInputLength();
 
 	public abstract void displayWrongInputMessage(char wrongInput, int error);
-	
+	/*
 	public abstract void displayWrongColumnInputMessage(char wrongInput);
 	
 	public abstract void displayWrongRowInputMessage(char wrongInput);
 
 	public abstract void displayWrongSymbolInputMessage(char wrongInput);
-	
+	*/
 	public abstract void displayElapsedTime(double time);
 	
 	public abstract void displayCongratulations();
@@ -79,6 +79,8 @@ public abstract class Output {
 		}
 	}
 	
+	public abstract void displayInvalidNameMessage();
+	
 	public void displayHighscoresAfterNewEntry(Ranklist ranklist) {
 		for (int i = 0; i < ranklist.getWinnerCount(); i++) {
 			System.out.println(i + 1 + ".\t" + ranklist.getName(i) + "\t" + ranklist.getTime(i));		
@@ -88,5 +90,9 @@ public abstract class Output {
 	public abstract void displayNameInputMessage();
 
 	public abstract void displayRestartOption();
+
+	public abstract void displayGameRestart();
+	
+	public abstract void displayGameEnd();
 
 }

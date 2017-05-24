@@ -18,15 +18,15 @@ public class OutputGerman extends Output {
 				+ "Felder in welcher Reihenfolge gefüllt sind. Die Hinweise rechts geben Aufschluss auf die jeweilige Zeile\n"
 				+ "und die unterhalb auf die jeweilige Spalte.\n"
 				+ "1 und 2 am rechten Rand bedeuten zum Beispiel, dass von links nach rechts 1 einzelnes Feld gefüllt ist\n"
-				+ "und weiter rechts davon zwei auffeinanderfolgende Felder. Davor und dazwischen befinden sich beliebiggroße Freiräume.\n"
-				+ "Aufgabe:\n Fülle das gesamte Spielfeld, ein \"X\" markiert ein ausgefülltes Feld, ein \"*\" ein freies Feld.\n"
-				+ "Die Spalten werden in Buchstaben von A-I und die Zeilen von 1-9 aufgezählt. Ein markiertes Feld kann mit \"~\"\n"
-				+ "wieder entmarkiert werden."
-				+ "Beispiele:\n"
-				+ "Das linke obere Feld wird also als gefülltes Feld mit A1X markiert.\n"
-				+ "Ein freies Feld wird zum Beispiel mit G7* deklariert.\n"
-				+ "Mit G7~ wird die *-Markierung wieder entfernt.\n"
-				+ "\nViel Spaß beim Spielen.\n");
+				+ "und weiter rechts davon zwei auffeinanderfolgende Felder. Davor und dazwischen befinden sich beliebiggroße Freiräume.\n\n"
+				+ "Aufgabe:\n Fülle das gesamte Spielfeld, ein \"X\" markiert ein ausgefülltes Feld, ein \"*\" ein freies Feld.\n "
+				+ "Die Spalten werden in Buchstaben von A-I und die Zeilen von 1-9 aufgezählt. Ein markiertes Feld kann mit \"~\"\n "
+				+ "wieder entmarkiert werden.\n\n"
+				+ "Beispiele:\n "
+				+ "Das linke obere Feld wird also als gefülltes Feld mit A1X markiert.\n "
+				+ "Ein freies Feld wird zum Beispiel mit G7* deklariert.\n "
+				+ "Mit G7~ wird die *-Markierung wieder entfernt.\n\n"
+				+ "Viel Spaß beim Spielen.\n");
 	}
 	
 	@Override
@@ -65,6 +65,7 @@ public class OutputGerman extends Output {
 		System.out.println(wrongInput + " ist als " + errorCase + " ungültig. Bitte gib die Werte erneut ein.");
 	}
 	
+	/*
 	@Override
 	public void displayWrongColumnInputMessage(char wrongInput) {
 		System.out.println(wrongInput + " ist als Spaltenwert ungültig. Bitte gib die Werte erneut ein.");
@@ -79,6 +80,7 @@ public class OutputGerman extends Output {
 	public void displayWrongSymbolInputMessage(char wrongInput) {
 		System.out.println(wrongInput + " ist als Symbol ungültig. Bitte gib die Werte erneut ein.");
 	}
+	*/
 	
 	@Override
 	public void displayElapsedTime(double time) {
@@ -96,7 +98,22 @@ public class OutputGerman extends Output {
 	}
 
 	@Override
+	public void displayInvalidNameMessage() {
+		System.out.println("Der Name ist leer oder zu beträgt mehr als 16 Zeichen. Bitte gib einen anderen Namen ein.");
+	}
+	
+	@Override
 	public void displayRestartOption() {
 		System.out.println("Wenn du noch ein Spiel spielen willst, gib \"Ja\" ein.");
+	}
+	
+	@Override
+	public void displayGameRestart() {
+		System.out.println("Du hast ein neues Spiel gestartet.\n");
+	}
+	
+	@Override
+	public void displayGameEnd() {
+		System.out.println("Das Spiel wurde beendet.");
 	}
 }
