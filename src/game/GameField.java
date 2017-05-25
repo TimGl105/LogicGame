@@ -34,6 +34,16 @@ public class GameField {
 		return field;
 	}
 	
+	public int[][] getFieldCopy() {
+		int[][] i = new int[field.length][field[0].length];
+		for(int j = 0; j < field.length; j++) {
+			for(int k = 0; k < field[j].length; k++) {
+				i[j][k] = field[j][k];
+			}
+		}
+		return i;
+	}
+	
 	public void setField(int[][] field) {
 		this.field = field;
 	}

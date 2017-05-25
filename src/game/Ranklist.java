@@ -7,81 +7,103 @@ public class Ranklist {
 	String gameName;
 	Vector<Double> times;
 	Vector<String> names;
-	int winnerCount;
+	int rankCount;
 	int capacity;
 	
 	public Ranklist(String gameName, int winnerCount) {
 		this.gameName = gameName;
-		this.winnerCount = winnerCount;
+		this.rankCount = winnerCount;
 		this.times = new Vector<Double>(winnerCount);
 		this.names = new Vector<String>(winnerCount);
 	}
 	
 	private boolean isValidIndexAccess(int index) {
-		return (index >= 0 && index <= winnerCount && index <= capacity - 1);
+		return (index >= 0 && index < capacity && index < rankCount);
 	}
-	
-//	private boolean isValidIndexWriteAccess(int index) {
-//		return (index >= 0 && index <= winnerCount && winnerCount < times.size());
-//	}
 	
 	/**
 	 * 
-	 * @param index
-	 * @return time of index in sec or -1 if index was invalid
+	 * @param rank
+	 * @return time of rank in sec or -1 if rank was invalid
 	 */
-	public double getTime(int index) {
-		if (isValidIndexAccess(index)) {
-			return times.get(index);
+	public double getTime(int rank) {
+		if (isValidIndexAccess(castRankToIndex(rank))) {
+			return times.get(castRankToIndex(rank));
 		} else {
 			return -1.0;
 		}
 	}
 	
-	public void insertTime(int index, double time) {
+	private void insertTime(int index, double time) {
 		times.insertElementAt(time, index);
 	}
 	
 	/**
 	 * 
-	 * @param index
+	 * @param rank
 	 * @return name of index or "---" if index was invalid
 	 */
-	public String getName(int index) {
-		if (isValidIndexAccess(index)) {
-			return names.get(index);			
+	public String getName(int rank) {
+		if (isValidIndexAccess(castRankToIndex(rank))) {
+			return names.get(castRankToIndex(rank));			
 		} else {
 			return "---";
 		}
 	}
 	
-	public void insertName(int index, String name) {
-		names.insertElementAt(name, index);
+	/**
+	 * 
+	 * @param rank
+	 * @param name
+	 */
+	public void setName(int rank, String name) {
+		names.set(castRankToIndex(rank), name);
 	}
 	
-	public int getWinnerCount() {
-		return winnerCount;
+	/**
+	 * Creates new entry at given index with default as name.
+	 * @param index index
+	 */
+	private void insertEntry(int index) {
+		names.insertElementAt("default", index);
+	}
+	
+	public int getCapacity() {
+		return capacity;
 	}
 
+	public int getRankCount() {
+		return rankCount;
+	}
+	
 	/**
-	 * Validates the rank of the given winners value.
+	 * Returns the rank of the given time.
 	 * @param time winners value
-	 * @return winner rank
+	 * @return winner rank (1 is the highest rank, rankCount the lowest)
 	 */
-	public int validateWinner(double time) {
-		int i = (winnerCount > times.size()) ? times.size() - 1 : winnerCount - 1;
-		for (; i >= 0; i--) {
-			if (time > times.get(i)) {
-				return i++;
+	public int getRank(double time) {
+		int i = (times.size() < rankCount) ? times.size() : rankCount;
+		for (; i >= 1; i--) {
+			if (time >= times.get(i-1)) {
+				return i+1;
 			}
 		}
-		return 0;
+		return 1;
 	}
-
-	public void setWinnerEntry(int index, String name, double time) {
-		insertTime(index, time);
-		insertName(index, name);
-		if (capacity < winnerCount) capacity++;
-		times.setSize(winnerCount);
+	
+	/**
+	 * 
+	 * @param rank
+	 * @param time
+	 */
+	public void setWinnerEntry(int rank, double time) {
+		insertTime(castRankToIndex(rank), time);
+		insertEntry(castRankToIndex(rank));
+		if (capacity < rankCount) capacity++;
+		if (capacity > rankCount) times.setSize(rankCount);
+	}
+	
+	private int castRankToIndex(int rank) {
+		return --rank;
 	}
 }

@@ -44,7 +44,7 @@ public class GameController extends Thread {
 
 		input = new Input(System.in, view);
 		try {
-			view.displayGameRules();
+//			view.displayGameRules();
 			view.displayGameOptions(games);
 
 			currentGame = input.getGameDecision(games.size());
@@ -53,7 +53,7 @@ public class GameController extends Thread {
 				currentGame = input.getGameDecision(games.size());
 			}
 			
-			logic.setGameField(games.get(currentGame).getGamefield().getField());	// not for input
+			logic.setGameField(games.get(currentGame).getGamefield().getFieldCopy());
 
 			view.displayField(logic.getCompleteGameField(), logic.getGameSize(), logic.getCompleteGameSize());
 
@@ -72,11 +72,13 @@ public class GameController extends Thread {
 			view.displayElapsedTime(time);
 
 			setRank();
+			
+			if (isInRanklist()) games.get(currentGame).getRanklist().setWinnerEntry(rank, time);
 			view.displayHighscoresBeforeNewEntry(games.get(currentGame).getRanklist(), rank);
-			if (rank < 3 && rank >= 0) {
+			if (isInRanklist()) {	
 				view.displayNameInputMessage();
 				playerName = input.getName();
-				games.get(currentGame).getRanklist().setWinnerEntry(rank, playerName, time);
+				games.get(currentGame).getRanklist().setName(rank, playerName);
 				view.displayHighscoresAfterNewEntry(games.get(currentGame).getRanklist());
 			}
 
@@ -91,12 +93,16 @@ public class GameController extends Thread {
 	 * Gets rank and sets it to global variable.
 	 */
 	private void setRank() {
-		int i = games.get(currentGame).getRanklist().validateWinner(time);
+		int i = games.get(currentGame).getRanklist().getRank(time);
 		if (i <= 3) {
 			rank = i;
 		} else {
 			rank = -1;
 		}
+	}
+	
+	private boolean isInRanklist() {
+		return rank <= 3 && rank > 0;
 	}
 	
 	public boolean playerWantsRestart() {

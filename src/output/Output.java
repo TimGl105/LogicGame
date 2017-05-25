@@ -1,12 +1,13 @@
 package output;
 
+import java.util.ResourceBundle;
 import java.util.Vector;
 
 import game.Game;
 import game.GameLogic;
 import game.Ranklist;
 
-public abstract class Output {
+public abstract class Output extends ResourceBundle {
 
 	protected GameLogic logic;
 	
@@ -69,12 +70,12 @@ public abstract class Output {
 	
 	public abstract void displayCongratulations();
 	
-	public void displayHighscoresBeforeNewEntry(Ranklist winners, int newEntry) {
-		for (int i = 0; i < winners.getWinnerCount(); i++) {
+	public void displayHighscoresBeforeNewEntry(Ranklist ranklist, int newEntry) {
+		for (int i = 1; i <= ranklist.getRankCount(); i++) {
 			if (i == newEntry) {
-				System.out.println(i + 1);
+				System.out.println(i + ".");
 			} else {
-			System.out.println(i + 1 + ".\t" + winners.getName(i) + "\t" + winners.getTime(i));		
+				System.out.println(i + ".\t" + ranklist.getName(i) + "\t" + ranklist.getTime(i));		
 			}
 		}
 	}
@@ -82,8 +83,8 @@ public abstract class Output {
 	public abstract void displayInvalidNameMessage();
 	
 	public void displayHighscoresAfterNewEntry(Ranklist ranklist) {
-		for (int i = 0; i < ranklist.getWinnerCount(); i++) {
-			System.out.println(i + 1 + ".\t" + ranklist.getName(i) + "\t" + ranklist.getTime(i));		
+		for (int i = 1; i <= ranklist.getRankCount(); i++) {
+			System.out.println(i + ".\t" + ranklist.getName(i) + "\t" + ranklist.getTime(i));		
 		}
 	}
 	

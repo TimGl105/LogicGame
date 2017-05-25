@@ -1,16 +1,29 @@
 package output;
 
+import java.util.Enumeration;
 import java.util.Vector;
 
 import game.Game;
 import game.GameLogic;
 
-public class OutputGerman extends Output {	
+public class Output_de extends Output {	
 
-	public OutputGerman(GameLogic logic) {
+	public Output_de(GameLogic logic) {
 		super(logic);
 	}
 
+	@Override
+	public Enumeration<String> getKeys() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	protected Object handleGetObject(String key) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+	
 	@Override
 	public void displayGameRules() {
 		System.out.println("Die Regeln sind einfach: links oben beginnend befindet sich ein quadratisches Spielfeld.\n"
@@ -116,4 +129,5 @@ public class OutputGerman extends Output {
 	public void displayGameEnd() {
 		System.out.println("Das Spiel wurde beendet.");
 	}
+
 }
