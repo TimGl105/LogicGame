@@ -9,7 +9,7 @@ public class GameLogic {
 	/**
 	 * The indicator for filled by the input-field.
 	 */
-	private static int FILLED_GF;
+	private final int FILLED_GF;
 	
 	private int gameSize;
 	private int[][] gameField;

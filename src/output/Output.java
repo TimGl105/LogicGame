@@ -1,11 +1,13 @@
 package output;
 
+import java.util.ResourceBundle;
 import java.util.Vector;
 
-import game.GameField;
+import game.Game;
 import game.GameLogic;
+import game.Ranklist;
 
-public abstract class Output {
+public abstract class Output extends ResourceBundle {
 
 	protected GameLogic logic;
 	
@@ -26,7 +28,7 @@ public abstract class Output {
 	
 	public abstract void displayGameRules();
 	
-	public abstract void displayGameOptions(Vector<GameField> games);
+	public abstract void displayGameOptions(Vector<Game> games);
 
 	public void displayField(int[][] field, int innerSize, int completeSize) {
 		System.out.print("    ");
@@ -57,15 +59,41 @@ public abstract class Output {
 	public abstract void displayWrongInputLength();
 
 	public abstract void displayWrongInputMessage(char wrongInput, int error);
-	
+	/*
 	public abstract void displayWrongColumnInputMessage(char wrongInput);
 	
 	public abstract void displayWrongRowInputMessage(char wrongInput);
 
 	public abstract void displayWrongSymbolInputMessage(char wrongInput);
-	
+	*/
 	public abstract void displayElapsedTime(double time);
 	
 	public abstract void displayCongratulations();
+	
+	public void displayHighscoresBeforeNewEntry(Ranklist ranklist, int newEntry) {
+		for (int i = 1; i <= ranklist.getRankCount(); i++) {
+			if (i == newEntry) {
+				System.out.println(i + ".");
+			} else {
+				System.out.println(i + ".\t" + ranklist.getName(i) + "\t" + ranklist.getTime(i));		
+			}
+		}
+	}
+	
+	public abstract void displayInvalidNameMessage();
+	
+	public void displayHighscoresAfterNewEntry(Ranklist ranklist) {
+		for (int i = 1; i <= ranklist.getRankCount(); i++) {
+			System.out.println(i + ".\t" + ranklist.getName(i) + "\t" + ranklist.getTime(i));		
+		}
+	}
+	
+	public abstract void displayNameInputMessage();
+
+	public abstract void displayRestartOption();
+
+	public abstract void displayGameRestart();
+	
+	public abstract void displayGameEnd();
 
 }
